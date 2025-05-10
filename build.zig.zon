@@ -1,0 +1,21 @@
+.{
+    .name = .plutosvg,
+    .version = "0.0.6",
+    .fingerprint = 0x4d98a9c28131232f, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.14.0",
+    .dependencies = .{
+        .plutovg = .{
+            .url = "https://github.com/sammycage/plutovg/archive/refs/tags/v1.0.0.tar.gz",
+            .hash = "N-V-__8AABt5DwAlC69cGd2MBdqvlbvpWTC0yDIsbgha3g9Y",
+        },
+        .plutosvg = .{
+            .url = "https://github.com/sammycage/plutosvg/archive/9c3d6d701e3957a6bc61251f45852bfdf9cde3e9.tar.gz",
+            .hash = "N-V-__8AAE23BABBp4a-9A49LViXGvy9XpI_thZU1Rfwg9pl",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "lib",
+    },
+}
