@@ -3,7 +3,7 @@ const c = @cImport({
     @cInclude("plutosvg.h");
 });
 
-const ArrayList = std.ArrayList;
+const ArrayList = std.array_list.Managed;
 const Allocator = std.mem.Allocator;
 
 const WriteFn = c.plutovg_write_func_t;
@@ -18,7 +18,7 @@ fn deinitStream() void {
     buffer.deinit();
 }
 
-fn writeStream(_: ?*anyopaque, c_data: ?*anyopaque, size: i32) callconv(.C) void {
+fn writeStream(_: ?*anyopaque, c_data: ?*anyopaque, size: i32) callconv(.c) void {
     std.debug.assert(c_data != null);
     const data_ptr: *anyopaque = c_data.?;
 

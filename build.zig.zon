@@ -1,8 +1,8 @@
 .{
     .name = .plutosvg,
-    .version = "0.0.6",
-    .fingerprint = 0x4d98a9c28131232f, // Changing this has security and trust implications.
-    .minimum_zig_version = "0.14.0",
+    .version = "0.0.6-1",
+    .fingerprint = 0x4d98a9c28131232f,
+    .minimum_zig_version = "0.15.1",
     .dependencies = .{
         .plutovg = .{
             .url = "https://github.com/sammycage/plutovg/archive/refs/tags/v1.0.0.tar.gz",
