@@ -20,7 +20,7 @@ pub fn build(b: *std.Build) void {
         .linkage = linkage,
     });
 
-    vg_lib.addCSourceFiles(.{
+    vg_lib.root_module.addCSourceFiles(.{
         .root = plutovg.path("source"),
         .files = &.{
             "plutovg-blend.c",
@@ -36,7 +36,7 @@ pub fn build(b: *std.Build) void {
             "plutovg-ft-stroker.c",
         },
     });
-    vg_lib.addIncludePath(plutovg.path("include"));
+    vg_lib.root_module.addIncludePath(plutovg.path("include"));
     vg_lib.installHeadersDirectory(plutovg.path("include"), "", .{});
 
     b.installArtifact(vg_lib);
@@ -53,12 +53,12 @@ pub fn build(b: *std.Build) void {
         .linkage = linkage,
     });
 
-    svg_lib.addCSourceFiles(.{
+    svg_lib.root_module.addCSourceFiles(.{
         .root = plutosvg.path("source"),
         .files = &.{"plutosvg.c"},
     });
     svg_lib.installHeadersDirectory(plutosvg.path("source"), "", .{});
-    svg_lib.linkLibrary(vg_lib);
+    svg_lib.root_module.linkLibrary(vg_lib);
     svg_lib.installLibraryHeaders(vg_lib);
 
     b.installArtifact(svg_lib);
@@ -82,8 +82,8 @@ pub fn build(b: *std.Build) void {
             .link_libc = true,
         }),
     });
-    example.addCSourceFile(.{ .file = plutosvg.path("examples/camera2png.c") });
-    example.linkLibrary(svg_lib);
+    example.root_module.addCSourceFile(.{ .file = plutosvg.path("examples/camera2png.c") });
+    example.root_module.linkLibrary(svg_lib);
 
     const example_svg = b.addInstallFileWithDir(plutosvg.path("examples/camera.svg"), .bin, "camera.svg");
     b.getInstallStep().dependOn(&example_svg.step);

@@ -1,6 +1,6 @@
 .{
     .name = .plutosvg,
-    .version = "0.0.6-1",
+    .version = "0.0.6-2",
     .fingerprint = 0x4d98a9c28131232f,
     .minimum_zig_version = "0.15.1",
     .dependencies = .{
